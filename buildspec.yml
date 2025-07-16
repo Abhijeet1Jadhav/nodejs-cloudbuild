@@ -11,10 +11,11 @@ phases:
     commands:
       - echo Build completed on `date`
 
-  post_build:
+ post_build:
     commands:
-      - zip -r app.zip * 
+      - zip -r app.zip . -x "*.git*" "*node_modules*" # root-level files only
       - mv app.zip /tmp/app.zip
+
 
 artifacts:
   files:
