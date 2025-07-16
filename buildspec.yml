@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - npm install
+
+  build:
+    commands:
+      - echo Build completed on `date`
+
+  post_build:
+    commands:
+      - zip -r app.zip * 
+      - mv app.zip /tmp/app.zip
+
+artifacts:
+  files:
+    - /tmp/app.zip
