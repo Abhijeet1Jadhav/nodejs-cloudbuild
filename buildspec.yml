@@ -11,7 +11,12 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - zip -r app.zip * .[^.]*
+      - mkdir bundle
+      - cp -r * bundle/
+      - cp -r .* bundle/ || true  # Copy hidden files (ignoring errors)
+      - cd bundle
+      - zip -r ../app.zip ./*
+      - cd ..
 
 artifacts:
   files:
