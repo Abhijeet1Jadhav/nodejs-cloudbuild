@@ -4,15 +4,10 @@ phases:
   install:
     runtime-versions:
       nodejs: 22
-    commands:
-      - echo Installing dependencies...
-      - npm install
-
   build:
     commands:
-      - echo Packaging app files...
-      - zip -r app.zip . -x "app.zip"
-
+      - npm install
+      - zip -r app.zip * .[^.]*   # includes hidden files like .ebextensions
 artifacts:
   files:
     - app.zip
