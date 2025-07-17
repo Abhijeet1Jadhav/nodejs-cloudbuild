@@ -3,20 +3,16 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 16
+      nodejs: 18
     commands:
+      - echo Installing source NPM dependencies...
       - npm install
 
   build:
     commands:
-      - echo Build step completed
-
-  post_build:
-    commands:
-      - echo Packaging application...
-      - zip -r app.zip * .[^.]* -x "*.git*" "node_modules/*"
-      - mv app.zip ../app.zip
+      - echo Build started on `date`
+      - zip -r app.zip * .[^.]*
 
 artifacts:
   files:
-    - ../app.zip
+    - app.zip
