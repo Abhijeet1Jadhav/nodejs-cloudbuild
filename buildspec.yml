@@ -5,17 +5,13 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo Installing NPM dependencies...
+      - echo Installing dependencies...
       - npm install
 
   build:
     commands:
-      - echo Starting build at `date`
-      - mkdir bundle
-      - rsync -av --exclude=bundle ./ bundle/
-      - cd bundle
-      - zip -r ../app.zip ./*
-      - cd ..
+      - echo Packaging app files...
+      - zip -r app.zip . -x "app.zip"
 
 artifacts:
   files:
