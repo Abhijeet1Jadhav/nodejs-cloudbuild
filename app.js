@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('🚀 Hello from CodeBuild + CodePipeline + GitHub Actions');
+  res.send('🚀 Hello from Elastic Beanstalk!');
 });
 
 const PORT = process.env.PORT || 3000;
