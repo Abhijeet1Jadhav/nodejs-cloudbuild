@@ -5,15 +5,14 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo Installing source NPM dependencies...
+      - echo Installing NPM dependencies...
       - npm install
 
   build:
     commands:
-      - echo Build started on `date`
+      - echo Starting build at `date`
       - mkdir bundle
-      - cp -r * bundle/
-      - cp -r .* bundle/ || true  # Copy hidden files (ignoring errors)
+      - rsync -av --exclude=bundle ./ bundle/
       - cd bundle
       - zip -r ../app.zip ./*
       - cd ..
